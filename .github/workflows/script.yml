@@ -6,6 +6,12 @@ on:
 jobs:
   echo-input:
     runs-on: ubuntu-latest
+    if: >
+      github.event.eventName == "push" ||
+      (
+        github.event.eventName == "pull_request_review_comment" &&
+        github.event.payload.user.login == "okitan"
+      )
     steps:
       - uses: actions/checkout@v2
       - uses: actions/github-script@v4
