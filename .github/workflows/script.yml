@@ -7,6 +7,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/github-script@v4
         with:
-          script: |
-            const script = require('./script/push.js')
-            await script({ github, context })
+          script: await require('./script/push.js')({ github, context })
